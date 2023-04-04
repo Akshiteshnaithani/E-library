@@ -1,0 +1,48 @@
+body {
+  background-image: url('bgimages/bgimg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  
+  .navbar-brand {
+    color: rgb(26, 28, 26);
+  }
+  .navbar-brand {
+    font-size: 50px;
+  }
+  .card-title {
+    color: rgb(27, 22, 73);
+  }
+  .navbar-brand,p {
+    font-family: "Times New Roman", Times, serif;
+  }
+  p{
+    text-align: center;
+  }
+  p {
+    color: rgb(16, 20, 16);
+  }
+  p {
+    font-size: 40px;
+  }
+  .card {
+    background: transparent;
+    border: none;
+  }
+  .card-header {
+    font-size: 24px; 
+    font-family:"Times New Roman", Times, serif;
+  }
+  .times-new-roman {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-style: bold;
+    color: black;
+  }
+  
+  .btn-transparent {
+    background-color: transparent;
+    border-color: transparent;
+    color: #007bff;
+  }
+  
