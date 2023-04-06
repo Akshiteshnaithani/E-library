@@ -5,7 +5,10 @@ if (isset($_POST['submit'])) {
     $name = $_POST['full_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $upassword = $_POST['upassword'];
 
+    $pass = password_hash($password, PASSWORD_BCRYPT);
+    $upass = password_hash($upassword, PASSWORD_BCRYPT);
 
     $emailquery = " SELECT * FROM registration WHERE email = '$email' ";
 
@@ -18,16 +21,18 @@ if (isset($_POST['submit'])) {
     </script>
     <?php
 } else {
-        $insertquery = "insert into registration( full_name , email , password ) values( '$name' , '$email' , '$password' )";
-        $iquery = mysqli_query($con, $insertquery);
+        if ($passowrd === $upassword) {
+            $insertquery = "insert into registration( full_name , email , password ) values( '$name' , '$email' , '$pass' )";
+            $iquery = mysqli_query($con, $insertquery);
 
-        if ($iquery) {
-            ?>
+            if ($iquery) {
+                ?>
               <script>
                   alert("insert successfully");
               </script>
           <?php
 header("Location:login.php");
+            }
         } else {
             ?>
               <script>

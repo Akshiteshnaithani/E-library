@@ -36,9 +36,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <button type="button" class="btn btn-primary me-3"><a style = "text-decoration:none; color:white;"href="editpage.php?id=<?php echo $_GET['id'];?>">EDIT DETAILS</a>
+            <button type="button" class="btn btn-primary me-3"onclick="alert('Are you sure you want to Edit?')"><a style = "text-decoration:none; color:white;"href="editpage.php?id=<?php echo $_GET['id'];?>">
+              EDIT DETAILS</a>
             </button>
-            <button type="button" class="btn btn-primary"><a style = "text-decoration:none; color:white;"href="delete.php?id=<?php echo $_GET['id'];?>">DELETE BOOK</a></button>
+            <button type="button" class="btn btn-primary"onclick="alert('Are you sure you want to Delete?')"><a style = "text-decoration:none; color:white;"href="delete.php?id=<?php echo $_GET['id'];?>">DELETE BOOK</a></button>
           </div>
         </div>
       </nav>

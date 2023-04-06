@@ -91,7 +91,7 @@ if (isset($_POST['search_btn'])) {
 }
 
 // pagination
-$rows_per_page = 6;
+$rows_per_page = 3;
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $rows_per_page;
 

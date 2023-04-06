@@ -5,27 +5,28 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $check_email = "SELECT * FROM registration WHERE email = '$email' and password = '$password'";
+    $check_email = "SELECT * FROM registration WHERE email = '$email'";
     $result = mysqli_query($con, $check_email);
+    $check = mysqli_num_rows($result);
 
-    $check = mysqli_fetch_array($result);
-    if (isset($check)) {
-        ?>
-    <script>
-        alert ("login successful");
-    </script>
-    <?php
-header("location:mainpage.php");
-    } else {
-        ?>
-    <script>
-        alert ("login fail");
-    </script>
-    <?php
+    if ($check == 1) {
+        $data = mysqli_fetch_assoc($result);
+        $cpass = $data['password'];
+        $pass = password_verify($password, $cpass);
 
+        if ($pass == true) {
+            header("location:mainpage.php");
+        } else {
+            ?>
+            <script>
+                alert("login fail");
+            </script>
+<?php
+}
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
