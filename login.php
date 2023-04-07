@@ -72,22 +72,22 @@ if (isset($_POST['submit'])) {
     <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-6">
-      <div class="card bg-transparent">
-        <div class="card-header text-center text-white">LOG IN HERE</div>
+      <div class="card bg-white opacity-75 ">
+        <div class="card-header text-center ">LOG IN HERE</div>
         <div class="card-body">
           <form action="" method="POST">
             <div class="mb-3 text-center">
               <label for="email" class="form-label  times-new-roman">Email address</label>
-              <input type="email" class="form-control" placeholder="Enter email" name="email" />
+              <input type="email" class="form-control" style="border:1px solid black;" placeholder="Enter email" name="email" />
             </div>
             <div class="mb-3 text-center">
               <label for="password" class="form-label times-new-roman">Password</label>
-              <input type="password" class="form-control" placeholder="Password" name="password" />
+              <input type="password" class="form-control" style="border:1px solid black;"placeholder="Password" name="password" />
             </div>
             <div class="card-body text-center">
               <button type="submit" class="btn btn-primary" name="submit">LOG IN</button>
             </div>
-            <h6 class="text-center text-white">not account?<a href="registrationpage.php"class="text-decoration-none">register here</a></h6>
+            <h6 class="text-center ">not account?<a href="registrationpage.php"class="text-decoration-none">register here</a></h6>
           </form>
         </div>
       </div>

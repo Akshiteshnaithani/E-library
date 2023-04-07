@@ -25,10 +25,6 @@ body {
   p {
     font-size: 40px;
   }
-  .card {
-    background: transparent;
-    border: none;
-  }
   .card-header {
     font-size: 24px; 
     font-family:"Times New Roman", Times, serif;

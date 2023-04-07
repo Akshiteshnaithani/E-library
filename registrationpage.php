@@ -89,28 +89,28 @@ header("Location:login.php");
     <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header text-center text-white">
+            <div class="card opacity-75" >
+              <div class="card-header text-center ">
                 REGISTER HERE
               </div>
               <div class="card-body text-center">
                 <form action="" method="post">
                   <div class="mb-3">
                     <label for="fullName" class="form-label  times-new-roman">Full Name</label>
-                    <input type="text" class="form-control" name="full_name" placeholder="Enter full name">
+                    <input type="text" class="form-control" style="border:1px solid black;" style="border:1px solid black;" name="full_name" placeholder="Enter full name">
                   </div>
                   <div class="mb-3">
                     <label for="email" class="form-label  times-new-roman">Email address</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email">
+                    <input type="email" class="form-control"style="border:1px solid black;"  name="email" placeholder="Enter email">
                   </div>
                   <div class="mb-3">
                     <label for="password" class="form-label  times-new-roman">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" style="border:1px solid black;" name="password" placeholder="Password">
                   </div>
                   <div class="mb-3 text-center">
                     <button type="submit" class="btn btn-primary" name="submit">REGISTER</button>
                   </div>
-                  <h6 class="text-center text-white">already have an account? <a href="login.php"class="text-decoration-none">Log in here</a></h6>
+                  <h6 class="text-center ">already have an account? <a href="login.php"class="text-decoration-none">Log in here</a></h6>
                 </form>
               </div>
             </div>
