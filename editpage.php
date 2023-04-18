@@ -31,14 +31,10 @@ if (isset($_POST['submit'])) {
     $run_bookdeail = mysqli_query($con, $save_bookdetail);
 
     if ($run_bookdeail) {
-        ?><script>
-            alert('book updated successfully');
-        </script><?php
+        ?>><?php
             header("location:mainpage.php");
     } else {
-        ?><script>
-            alert('try again');
-        </script><?php
+        ?><?php
           header("location:editpage.php");
     }
 }
@@ -56,6 +52,7 @@ if (isset($_POST['submit'])) {
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
@@ -83,10 +80,11 @@ if (isset($_POST['submit'])) {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <a href="mainpage.php"> 
-            <button type="button" class="btn btn-primary me-3">
-              BACK TO LIST
+              <!-- back button -->
+            <button type="button" class="btn btn-secondary me-3"style="width: 120px; padding: 5px;  box-shadow: 2px 2px 5px #888888;">
+            <i class="fa fa-backward"style="font-size:24px"></i>
             </button>
-            </a>          
+            </a>     
           </div>
         </div>
       </nav>
@@ -121,7 +119,7 @@ if (isset($_POST['submit'])) {
                 <label for="book-description">Edit Book Description:</label>
                 <input class="form-control" name="bookdescription"  value= "<?php echo $row ['description'];?>" rows="5"/>
               </div>
-              <button type="submit" name= "submit" class="btn btn-primary mt-3 ">Save Changes</button>
+              <button type="submit" name= "submit" class="btn btn-secondary mt-3 " style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-save"style="font-size:24px"> </i> Save Changes</button>
             </div>
           </div>
         </form>

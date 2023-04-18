@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+
+
 body {
   background-image: url('bgimages/bgimg.jpg');
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
 }
   
+.text-elb{
+  color: rgba(0, 0, 0, 0.711);
+}
   .navbar-brand {
-    color: rgb(26, 28, 26);
+    color: rgb(24, 26, 24);
   }
   .navbar-brand {
     font-size: 50px;
@@ -55,4 +62,68 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+.title-head{
+  margin-top:120px;
+  width: 80%;
+  margin-left: 50px;
+}
+.title{
+  font-family:'Fredericka the Great', cursive;
+  font-size: 60px;
+  font-style: bold;
+  color: black;
+  /* margin-left: 130px; */
+}
+.text-read {
+  font-size: 25px;
+  /* margin-right:500px; */
+  margin-top: 20px;
+  text-align: start;
+  font-family: 'Delicious Handrawn', cursive;
+  color: rgb(1, 0, 3);
+}
+.flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px transparent;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color:transparent;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: transparent;
+  color: white;
+  transform: rotateY(180deg);
 }

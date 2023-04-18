@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['record'])) {
+    header('location:login.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +17,8 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
@@ -39,25 +48,63 @@
         <form  action="" method="post" class="navbar-form ms-auto">
           <div class="input-group">
             <input type="text" class="form-control" name="search_value" placeholder="Search...">
-            <button class="btn btn-primary me-3 "  name = "search_btn" type="submit">SEARCH</button>
+            <button class="btn btn-secondary me-3 " style="box-shadow: 2px 2px 5px #888888;" name = "search_btn" type="submit"><i class="fa fa-search"></i></button>
           </div>
         </form>
-        <a href="login.php">
-          <button type="button" class="btn btn-primary me-3">LOG OUT</button>
-        </a>
-        <a href="addBook.php">
-          <button type="button" class="btn btn-primary">ADD A BOOK</button>
-        </a>
-        <form action="" method="GET">
-          <div class="mx-3 d-flex ">
-            <select name="sort_alphabet" class="form-control">
-              <option value="">--SELECT OPTION--</option>
-              <option value="a-z"><?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "a-z") {echo "selected";}?>A-Z(Ascending Order)</option>
-              <option value="z-a"><?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "z-a") {echo "selected";}?>Z-A(Descending Order)</option>
-            </select>
-            <button type="submit" class="btn btn-primary me-3" id="basic-addon2">Sort</button>
-          </div>
-        </form>
+        <form action="" method="get">
+      <div class="mx-3 d-flex">
+        <select name="sort_alphabet" class="form-control">
+            <option value="">--SELECT OPTION--</option>
+            <option value="a-z" <?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "a-z") {echo "selected";}?>>
+                A-Z(Ascending Order)
+            </option>
+            <option value="z-a" <?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "z-a") {echo "selected";}?>>
+                Z-A(Descending Order)
+            </option>
+        </select>
+        <button type="submit" class="btn btn-secondary me-3" id="basic-addon2" style="box-shadow: 2px 2px 5px #888888;"><i class="fa fa-sort"></i></button>
+      </div>
+    </form>
+
+</div>
+          <?php
+if (isset($_SESSION['record'])) {
+    $data = $_SESSION['record'];
+
+    $role = $data['0'];
+    if ($role == 'admin') {?>
+    <div class="btn-group">
+  <button type="button" class="btn btn-secondary" style="width: 90px; padding: 3px;  box-shadow: 2px 2px 5px #888888;">Action <i class="fa fa-wrench"></i></button>
+  <button type="button" class="btn btn-light  dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" style="width: 30px; padding: 2px;  box-shadow: 2px 2px 5px #888888;">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu "style="background-color: transparent;border-color: transparent;">
+  <a href="addBook.php">
+  <button type="button" class="btn btn-light"  style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Book <i class="fa fa-book"></i></button>
+</a>
+<a href="registrationpage.php">
+  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Admin <i class="fa fa-user"></i></button>
+</a>
+<a href="all_admins.php">
+  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Edit Admin <i class="fa fa-user"></i></button>
+</a>
+</a>
+<a href="booklist.php">
+  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Book List <i class="fa fa-address-book"></i></button>
+</a>
+  </ul>
+
+
+<?php
+
+    }
+}
+?>
+<form action="logout.php" method="post">
+<button type="submit" name="logout" class="btn btn-danger mx-2 me-3"style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-power-off"></i></button>
+
+</form>
+
       </div>
     </div>
   </nav>
@@ -70,7 +117,6 @@
 
     <?php
 include 'connection.php';
-
 
 // sorting
 $sort_option = "";
@@ -91,7 +137,7 @@ if (isset($_POST['search_btn'])) {
 }
 
 // pagination
-$rows_per_page = 3;
+$rows_per_page = 6;
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $rows_per_page;
 
@@ -109,24 +155,24 @@ if (mysqli_num_rows($query_sort_run) > 0) {
     foreach ($query_sort_run as $row) {
         ?>
         <div class="col-md-4 justify-content-center d-flex">
-            <div class="card m-3" style="width: 222px;">
+            <div class="card m-3" style="width: 222px; background-color: transparent; border-color: transparent;">
             <img src="bookimage/<?=$row['uploadimage'];?>" alt="Card image" class="card-img-top" style="width: 220px; height:320px; transition: transform 0.2s ease-in-out;"/>
                 <div class="mt-3">
                     <h6 class="card-title about-sections times-new-roman">BOOK NAME: <?php echo $row['bookname']; ?></h6>
                     <h6 class="card-title  about-section times-new-roman">AUTHOR NAME: <?php echo $row['authorname']; ?></h6>
                   </div>
                   <div class="mt-2">
-                    <a href="moreinfo.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">More Info</a>
+                    <a href="moreinfo.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary" style="box-shadow: 2px 2px 5px #888888;">More Info <i class="fa fa-arrow-right"></i></a>
                   </div>
             </div>
         </div>
     <?php
-    }
+}
     echo '</div>';
     echo '<nav aria-label="Pagination">';
     echo '<ul class="pagination justify-content-center">';
     if ($current_page > 1) {
-        echo '<li class="page-item"><a class="page-link" href="?page=' . ($current_page - 1) . '">Previous</a></li>';
+        echo '<li class="page-item"><a class="page-link" href="?page=' . ($current_page - 1) . '"><i class=" fa fa-regular fa-backward"></i></a></li>';
     }
     for ($i = 1; $i <= $total_pages; $i++) {
         if ($i == $current_page) {
@@ -136,9 +182,9 @@ if (mysqli_num_rows($query_sort_run) > 0) {
         }
     }
     if ($current_page < $total_pages) {
-      echo '<li class="page-item"><a class="page-link" href="?page=' . ($current_page + 1) . '">Next</a></li>';
-  }
-  }
+        echo '<li class="page-item"><a class="page-link" href="?page=' . ($current_page + 1) . '"><i class="fa fa-regular fa-forward"></i></a></li>';
+    }
+}
 ?>
 </body>
 </html>

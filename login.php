@@ -1,7 +1,8 @@
 <?php
+session_start();
+
 include 'connection.php';
 if (isset($_POST['submit'])) {
-
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -10,21 +11,46 @@ if (isset($_POST['submit'])) {
     $check = mysqli_num_rows($result);
 
     if ($check == 1) {
-        $data = mysqli_fetch_assoc($result);
-        $cpass = $data['password'];
-        $pass = password_verify($password, $cpass);
+      $data = mysqli_fetch_assoc($result); 
+      if($data['is_verified']==1){
+          $record = array($data['user_role'], $data['full_name'], $data['email'], $data['password']);
+  
+          $_SESSION['record'] = $record;
+          $role = $data['user_role'];
+          if ($role == 'admin') {
+  
+              $cpass = $data['password'];
+              $pass = password_verify($password, $cpass);
+  
+              if ($pass == true) {
+                  header("location:mainpage.php");
+              }
+          } elseif($role == 'user'){
+  
+              $cpass = $data['password'];
+              $pass = password_verify($password, $cpass);
+  
+              if ($pass == true) {
+                  header("location:mainpage.php");
+              } else {
+                  ?>
+                  <script>
+                      alert("login fail");
+                  </script>
+                  <?php
+              }
+  
+          }
+      } else {
+          echo"
+          <script>
+          alert('email not verified');
+          window.location.href='login.php';
+          </script>";
+      }
+  }
+}
 
-        if ($pass == true) {
-            header("location:mainpage.php");
-        } else {
-            ?>
-            <script>
-                alert("login fail");
-            </script>
-<?php
-}
-    }
-}
 ?>
 
 <!DOCTYPE html>

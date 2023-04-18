@@ -1,14 +1,56 @@
 <?php
+
+session_start();
 include 'connection.php';
+
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
+function sendMail($email, $v_code)
+{
+
+    require "PHPMailer/PHPMailer.php";
+    require "PHPMailer/Exception.php";
+    require "PHPMailer/SMTP.php";
+
+    $mail = new PHPMailer(true);
+
+    try {
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'akshitesh.naithani@gmail.com';
+        $mail->Password = 'lsynwtbxfzauvjyg';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+
+        $mail->setFrom('akshitesh.naithani@gmail.com', 'akshitesh');
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Email verification form colord cow ';
+        $mail->Body = "Thanks for registration ! click here for verify the email adress
+    <a href='http://localhost:8000/verify.php?email=$email&v_code=$v_code'>verify</a>";
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
 
 if (isset($_POST['submit'])) {
     $name = $_POST['full_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $upassword = $_POST['upassword'];
+    $role = $_POST['role'];
 
     $pass = password_hash($password, PASSWORD_BCRYPT);
     $upass = password_hash($upassword, PASSWORD_BCRYPT);
+    $v_code = bin2hex(random_bytes(8));
 
     $emailquery = " SELECT * FROM registration WHERE email = '$email' ";
 
@@ -21,14 +63,14 @@ if (isset($_POST['submit'])) {
     </script>
     <?php
 } else {
-        if ($passowrd === $upassword) {
-            $insertquery = "insert into registration( full_name , email , password ) values( '$name' , '$email' , '$pass' )";
+        if ($password) {
+            $insertquery = "insert into registration( full_name , email , password ,user_role,verification_code,is_verified) values( '$name' , '$email' , '$pass','$role','$v_code','0' )";
             $iquery = mysqli_query($con, $insertquery);
 
-            if ($iquery) {
+            if ($iquery && sendMail($_POST['email'], $v_code)) {
                 ?>
               <script>
-                  alert("insert successfully");
+                  alert("registration successfully");
               </script>
           <?php
 header("Location:login.php");
@@ -36,7 +78,7 @@ header("Location:login.php");
         } else {
             ?>
               <script>
-                  alert("no insert");
+                  alert("fail");
               </script>
           <?php
 }
@@ -107,6 +149,26 @@ header("Location:login.php");
                     <label for="password" class="form-label  times-new-roman">Password</label>
                     <input type="password" class="form-control" style="border:1px solid black;" name="password" placeholder="Password">
                   </div>
+                  <?php
+
+// Default role is 'user'
+$role = 'user';
+
+if (isset($_SESSION['record'])) {
+    $data = $_SESSION['record'];
+    $role = $data[0];
+
+    // Check if user has been promoted to admin
+    if ($role == 'user' && isset($_SESSION['promoted_to_admin']) && $_SESSION['promoted_to_admin'] == true) {
+        $role = 'admin';
+    }
+}
+
+?>
+                  <div class="mb-3">
+                    <label for="Role" class="form-label  times-new-roman">Role</label>
+                    <input class="form-control" type="text"style="border:1px solid black;" value="<?php echo $role ?>" name="role" readonly>
+                  </div>
                   <div class="mb-3 text-center">
                     <button type="submit" class="btn btn-primary" name="submit">REGISTER</button>
                   </div>
@@ -117,6 +179,6 @@ header("Location:login.php");
           </div>
         </div>
       </div>
-
+     </div>
   </body>
 </html>
