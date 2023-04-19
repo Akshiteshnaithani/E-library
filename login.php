@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
       <p class="mt-5"></p>
     </div>
     <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center">  
     <div class="col-lg-6">
       <div class="card bg-white opacity-75 ">
         <div class="card-header text-center ">LOG IN HERE</div>
@@ -110,6 +110,7 @@ if (isset($_POST['submit'])) {
               <label for="password" class="form-label times-new-roman">Password</label>
               <input type="password" class="form-control" style="border:1px solid black;"placeholder="Password" name="password" />
             </div>
+            <h6 class="text-right "><a href="forgotpassword.php"class="text-decoration-none">forgot password?</a></h6>
             <div class="card-body text-center">
               <button type="submit" class="btn btn-primary" name="submit">LOG IN</button>
             </div>

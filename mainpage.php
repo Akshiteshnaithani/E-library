@@ -167,23 +167,22 @@ if (mysqli_num_rows($query_sort_run) > 0) {
             </div>
         </div>
     <?php
-}
-    echo '</div>';
-    echo '<nav aria-label="Pagination">';
+    }
     echo '<ul class="pagination justify-content-center">';
     if ($current_page > 1) {
-        echo '<li class="page-item"><a class="page-link" href="?page=' . ($current_page - 1) . '"><i class=" fa fa-regular fa-backward"></i></a></li>';
+        echo '<li class="page-item"><a class="page-link bg-secondary"style="box-shadow: 2px 2px 5px #888888;" href="?page=' . ($current_page - 1) . '"><i class=" fa fa-regular fa-backward"></i></a></li>';
     }
     for ($i = 1; $i <= $total_pages; $i++) {
         if ($i == $current_page) {
-            echo '<li class="page-item active"><a class="page-link" href="#">' . $i . '</a></li>';
+            echo '<li class="page-item active"><a class="page-link bg-secondary"style="box-shadow: 2px 2px 5px #888888;" href="#">' . $i . '</a></li>';
         } else {
-            echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+            echo '<li class="page-item"><a class="page-link bg-secondary"style="box-shadow: 2px 2px 5px #888888;" href="?page=' . $i . '">' . $i . '</a></li>';
         }
     }
     if ($current_page < $total_pages) {
-        echo '<li class="page-item"><a class="page-link" href="?page=' . ($current_page + 1) . '"><i class="fa fa-regular fa-forward"></i></a></li>';
+        echo '<li class="page-item"><a class="page-link bg-secondary"style="box-shadow: 2px 2px 5px #888888;" href="?page=' . ($current_page + 1) . '"><i class="fa fa-regular fa-forward"></i></a></li>';
     }
+    echo '</ul>';
 }
 ?>
 </body>

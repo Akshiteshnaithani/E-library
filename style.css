@@ -127,3 +127,14 @@ body {
   color: white;
   transform: rotateY(180deg);
 }
+.pagination .page-link {
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #ccc;
+}
+
+.pagination .page-item.active .page-link {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+}

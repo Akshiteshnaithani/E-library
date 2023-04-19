@@ -17,15 +17,17 @@ if (isset($_POST['submit'])) {
     $run_bookdeail = mysqli_query($con, $save_bookdetail);
 
     if ($run_bookdeail) {
-        ?><script>
-            alert('book added successfully');
-        </script><?php
-            header("location:mainpage.php");
+      echo"
+      <script>
+      alert('book added sucessfully');
+      window.location.href='mainpage.php';
+      </script>";
     } else {
-        ?><script>
-            alert('try again');
-        </script><?php
-          header("location:addbook.php");
+      echo"
+      <script>
+      alert('try again');
+      window.location.href='addBook.php';
+      </script>";
     }
 }
 
