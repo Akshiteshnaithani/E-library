@@ -52,7 +52,7 @@ if (isset($_SESSION['record'])) {
             <button type="button" class="btn btn-secondary me-3" style="width: 100px; padding: 5px;  box-shadow: 2px 2px 5px #888888;" ><a style = "text-decoration:none; color:white;"href="editpage.php? id=<?php echo $_GET['id']; ?>">
               Edit <i class="fa fa-pencil"style="font-size:20px"></i></a>
             </button>
-            <button type="button" class="btn btn-danger" style="width: 100px; padding: 5px; box-shadow: 2px 2px 5px #888888;"><a style = "text-decoration:none; color:white;"href="delete.php?del_book_id=<?php echo $_GET['id']; ?>">Delete <i class="fa fa-trash"style="font-size:20px"></i></a></button>
+            <button type="button" class="btn btn-danger" style="width: 100px; padding: 5px; box-shadow: 2px 2px 5px #888888;"><a style = "text-decoration:none; color:white;"href="delete.php?id=<?php echo $_GET['id']; ?>">Delete <i class="fa fa-trash"style="font-size:20px"></i></a></button>
             <?php
 }
 }

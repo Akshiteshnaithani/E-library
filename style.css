@@ -69,7 +69,7 @@
   margin-left: 50px;
 }
 .title{
-  font-family:'Fredericka the Great', cursive;
+  /* font-family:'Fredericka the Great', cursive; */
   font-size: 60px;
   font-style: bold;
   color: black;
@@ -80,7 +80,7 @@
   /* margin-right:500px; */
   margin-top: 20px;
   text-align: start;
-  font-family: 'Delicious Handrawn', cursive;
+  /* font-family: 'Delicious Handrawn', cursive; */
   color: rgb(1, 0, 3);
 }
 .pagination .page-link {

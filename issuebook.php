@@ -80,7 +80,6 @@ if (isset($_GET['id'])) {
    $duplicacy_result = mysqli_query($con, $duplicacy_query);
    $record = mysqli_fetch_assoc($duplicacy_result);
    $db_email = $record['email'];
-  //  var_dump($db_email); die();
    
    if ($email !== $db_email) {
      $query = "INSERT INTO issue_book (book_id,user_name, email, book_name, bookimg, no_of_book, issue_date, return_date) VALUES('$id_book','$username','$email','$bookname','$bookimage',' $no_book','$issue_date',' $return_date')";

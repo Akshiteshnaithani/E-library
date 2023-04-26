@@ -131,7 +131,7 @@ header("Location:login.php");
     <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <div class="card" style="border: 1px solid black;" >
+            <div class="card" style="border: 1px solid black; box-shadow: 2px 2px 2px #888888;" >
               <div class="card-header text-center ">
                 REGISTER HERE
               </div>
@@ -139,7 +139,7 @@ header("Location:login.php");
                 <form action="" method="post">
                   <div class="mb-3">
                     <label for="fullName" class="form-label  times-new-roman">Full Name</label>
-                    <input type="text" class="form-control" style="border:1px solid black;" style="border:1px solid black;" name="full_name" placeholder="Enter full name">
+                    <input type="text" class="form-control"style="border:1px solid black;" name="full_name" placeholder="Enter full name">
                   </div>
                   <div class="mb-3">
                     <label for="email" class="form-label  times-new-roman">Email address</label>
@@ -172,7 +172,7 @@ if (isset($_SESSION['record'])) {
                   <div class="mb-3 text-center">
                     <button type="submit" class="btn btn-primary" name="submit">REGISTER</button>
                   </div>
-                  <h6 class="text-center ">already have an account? <a href="login.php"class="text-decoration-none">Log in here</a></h6>
+                  <h6 class="text-center ">Already have an account? <a href="login.php"class="text-decoration-none">Log in here</a></h6>
                 </form>
               </div>
             </div>

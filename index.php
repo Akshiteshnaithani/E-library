@@ -41,7 +41,7 @@
     <div style="display:flex;">
       <div class="title-head">
         <h1 class="title">Your Library Anywhere...</h1>
-        <p class="text-read">Just by reading for 20 minutes a day is like a workout for your brain.<br /> Reading is a great way to improve your critical thinking.<br /> The physical act of sitting down and reading will encourage you to focus and concentrate on what you are reading.<br />The actual physical act of reading alone is a great exercise for your memory.</p>
+        <p class="text-read">Just by reading for 20 minutes a day is like a workout for your brain.<br /> Reading is a great way to improve your critical thinking.<br /> The physical act of sitting down and reading will <br>encourage you to focus and concentrate on what you are reading.<br />The actual physical act of reading alone is a great exercise for your memory.</p>
       </div>
     </div>
 

@@ -116,11 +116,11 @@ if (isset($_POST['submit'])) {
               <label for="password" class="form-label times-new-roman">Password</label>
               <input type="password" class="form-control" style="border:1px solid black;"placeholder="Password" name="password" />
             </div>
-            <h6 class="text-right "><a href="forgotpassword.php"class="text-decoration-none">forgot password?</a></h6>
+            <h6 class="text-right "><a href="forgotpassword.php"class="text-decoration-none">Forgot password?</a></h6>
             <div class="card-body text-center">
               <button type="submit" class="btn btn-primary" name="submit">LOG IN</button>
             </div>
-            <h6 class="text-center ">not account?<a href="registrationpage.php"class="text-decoration-none">register here</a></h6>
+            <h6 class="text-center ">Not account?<a href="registrationpage.php"class="text-decoration-none">Register here</a></h6>
           </form>
         </div>
       </div>
