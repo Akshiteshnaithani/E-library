@@ -21,9 +21,9 @@
   </head>
   <body>
     <div>
-    <nav class="navbar navbar-expand-lg navbar-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">E-library</a>
+    <nav class="navbar navbar-expand-lg bg-light"style="box-shadow: 2px 3px 5px #888888;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="mainpage.php" style="font-size: 25px;">E-library</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -40,15 +40,15 @@
           </div>
           <a href="mainpage.php"> 
               <!-- back button -->
-            <button type="button" class="btn btn-secondary me-3"style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
-            <i class="fa fa-backward"style="font-size:24px"></i>
+              <button type="button" class="btn btn-secondary me-3"style="width: 80px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
+            <i class="fa fa-backward"style="font-size:20px"></i>
             </button>
             </a>     
         </div>
       </nav>
     </div>
     <div>
-      <p>Explore the world of books</p>
+      <p class="mt-5">Explore the world of books</p>
     </div>
     <?php
     include 'connection.php';

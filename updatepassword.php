@@ -70,7 +70,7 @@ if (isset($_GET['email']) && isset($_GET['reset_token'])) {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">
-            <div class="card bg-white opacity-75 ">
+            <div class="card bg-white">
             <div class="card-header text-center ">Update Password</div>
             <div class="card-body text-center">
             <form action="" method="POST">

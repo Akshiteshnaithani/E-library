@@ -63,9 +63,9 @@ if (isset($_POST['submit'])) {
   </head>
   <body>
     <div>
-    <nav class="navbar navbar-expand-lg navbar-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">E-library</a>
+    <nav class="navbar navbar-expand-lg bg-light"style="box-shadow: 2px 3px 5px #888888;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="mainpage.php" style="font-size: 25px;">E-library</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -81,8 +81,8 @@ if (isset($_POST['submit'])) {
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <a href="mainpage.php"> 
               <!-- back button -->
-            <button type="button" class="btn btn-secondary me-3"style="width: 120px; padding: 5px;  box-shadow: 2px 2px 5px #888888;">
-            <i class="fa fa-backward"style="font-size:24px"></i>
+            <button type="button" class="btn btn-secondary me-3"style="width: 80px; padding: 5px;  box-shadow: 2px 2px 5px #888888;">
+            <i class="fa fa-backward"style="font-size:20px"></i>
             </button>
             </a>     
           </div>
@@ -109,15 +109,15 @@ if (isset($_POST['submit'])) {
             <div class="col-md-8">
               <div class="form-group  times-new-roman">
                 <label for="book-title">Edit Book Title:</label>
-                <input type="text" class="form-control" name="booktitle" value= "<?php echo $row ['bookname'] ?>" >
+                <input type="text" class="form-control" name="booktitle"style="border:1px solid black;" value= "<?php echo $row ['bookname'] ?>" >
               </div>
               <div class="form-group  times-new-roman">
                 <label for="author-name">Edit Author Name:</label>
-                <input type="text" class="form-control" name="authorname" value= "<?php echo $row ['authorname'];?>">
+                <input type="text" class="form-control" name="authorname" style="border:1px solid black;"value= "<?php echo $row ['authorname'];?>">
               </div>
               <div class="form-group times-new-roman">
                 <label for="book-description">Edit Book Description:</label>
-                <input class="form-control" name="bookdescription"  value= "<?php echo $row ['description'];?>" rows="5"/>
+                <textarea class="form-control" name="bookdescription"style="border:1px solid black;"  value= "<?php echo $row ['description'];?>" rows="5"></textarea>
               </div>
               <button type="submit" name= "submit" class="btn btn-secondary mt-3 " style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-save"style="font-size:24px"> </i> Save Changes</button>
             </div>

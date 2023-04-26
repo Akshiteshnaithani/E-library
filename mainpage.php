@@ -17,7 +17,7 @@ if (!isset($_SESSION['record'])) {
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -29,9 +29,10 @@ if (!isset($_SESSION['record'])) {
   </head>
   <body>
   <div>
-  <nav class="navbar navbar-expand-lg navbar-transparent">
+  <nav class="navbar navbar-expand-lg bg-light"style="box-shadow: 2px 3px 5px #888888;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="mainpage.php">E-library</a>
+      <a class="navbar-brand" href="mainpage.php" style="font-size: 25px;">E-library</a>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -64,9 +65,15 @@ if (!isset($_SESSION['record'])) {
         </select>
         <button type="submit" class="btn btn-secondary me-3" id="basic-addon2" style="box-shadow: 2px 2px 5px #888888;"><i class="fa fa-sort"></i></button>
       </div>
+
     </form>
 
+
 </div>
+
+
+<!-- button only admin can acess -->
+
           <?php
 if (isset($_SESSION['record'])) {
     $data = $_SESSION['record'];
@@ -86,7 +93,7 @@ if (isset($_SESSION['record'])) {
   <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Admin <i class="fa fa-user"></i></button>
 </a>
 <a href="all_admins.php">
-  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Edit Admin <i class="fa fa-user"></i></button>
+  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Details <i class="fa fa-user"></i></button>
 </a>
 </a>
 <a href="booklist.php">
@@ -100,18 +107,33 @@ if (isset($_SESSION['record'])) {
     }
 }
 ?>
-<form action="logout.php" method="post">
-<button type="submit" name="logout" class="btn btn-danger mx-2 me-3"style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-power-off"></i></button>
 
+<!-- button only user can acess -->
+<?php
+if (isset($_SESSION['record'])) {
+    $data = $_SESSION['record'];
+
+    $role = $data['0'];
+    if ($role == 'user') {?>
+
+ <form action="addcart.php" method="post">
+<button type="submit" name="addcart" class="btn btn-success mx-3 "style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-shopping-cart"></i></button>
 </form>
+<?php
 
+    }
+}
+?>
+<form action="logout.php" method="post">
+<button type="submit" name="logout" class="btn btn-danger mx-1 me-1"style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-power-off"></i></button>
+</form>
       </div>
     </div>
   </nav>
 </div>
 
     <div>
-      <p>Explore the world of books</p>
+      <p class="mt-5">Explore the world of books</p>
     </div>
     <br />
 
@@ -156,18 +178,36 @@ if (mysqli_num_rows($query_sort_run) > 0) {
         ?>
         <div class="col-md-4 justify-content-center d-flex">
             <div class="card m-3" style="width: 222px; background-color: transparent; border-color: transparent;">
-            <img src="bookimage/<?=$row['uploadimage'];?>" alt="Card image" class="card-img-top" style="width: 220px; height:320px; transition: transform 0.2s ease-in-out;"/>
+            <img src="bookimage/<?=$row['uploadimage'];?>" alt="Card image" class="card-img-top" style="width: 220px; height:320px; box-shadow: 10px 10px 10px #888888; transition: transform 0.2s ease-in-out;"/>
                 <div class="mt-3">
                     <h6 class="card-title about-sections times-new-roman">BOOK NAME: <?php echo $row['bookname']; ?></h6>
                     <h6 class="card-title  about-section times-new-roman">AUTHOR NAME: <?php echo $row['authorname']; ?></h6>
                   </div>
                   <div class="mt-2">
-                    <a href="moreinfo.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary" style="box-shadow: 2px 2px 5px #888888;">More Info <i class="fa fa-arrow-right"></i></a>
-                  </div>
+                  <a href="moreinfo.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;">More Info <i class="fa fa-arrow-right"></i></a>
+
+
+
+                    <?php
+if (isset($_SESSION['record'])) {
+            $data = $_SESSION['record'];
+
+            $role = $data['0'];
+            if ($role == 'user') {?>
+ <a class="btn btn-light" name="wish" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;" href="addcart.php?id=<?=$row['id'];?>"><i class="fa fa-heart"></i></i></a>
+ <a class="btn btn-light" name="issue" style=" font-size: 15px; padding: 8px 8px;box-shadow: 2px 2px 5px #888888;" href="issuebook.php?id=<?=$row['id'];?>"><i class="fa fa-book"></i></i></a>
+ <a class="btn btn-light" name="reader" style=" font-size: 15px; padding: 8px 8px;box-shadow: 2px 2px 5px #888888;" href="addcart.php?readed_id=<?=$row['id'];?>"><i class="fa fa-check"></i></i></a>
+
+<?php
+
+            }
+        }
+        ?>
+                    </div>
             </div>
         </div>
     <?php
-    }
+}
     echo '<ul class="pagination justify-content-center">';
     if ($current_page > 1) {
         echo '<li class="page-item"><a class="page-link bg-secondary"style="box-shadow: 2px 2px 5px #888888;" href="?page=' . ($current_page - 1) . '"><i class=" fa fa-regular fa-backward"></i></a></li>';
@@ -187,3 +227,12 @@ if (mysqli_num_rows($query_sort_run) > 0) {
 ?>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

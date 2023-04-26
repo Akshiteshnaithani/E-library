@@ -110,7 +110,7 @@ header("Location:login.php");
     <div>
     <nav class="navbar navbar-expand-lg navbar-transparent">
         <div class="container-fluid">
-          <a class="navbar-brand mx-auto">Explore the world of books</a>
+         <a class="navbar-brand mx-auto"style="text-shadow: 2px 2px 2px #888888;">Explore the world of books</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -131,7 +131,7 @@ header("Location:login.php");
     <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <div class="card opacity-75" >
+            <div class="card" style="border: 1px solid black;" >
               <div class="card-header text-center ">
                 REGISTER HERE
               </div>

@@ -40,8 +40,8 @@
           </div>
           <a href="login.php"> 
               <!-- back button -->
-            <button type="button" class="btn btn-secondary me-3"style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
-            <i class="fa fa-backward"style="font-size:24px"></i>
+              <button type="button" class="btn btn-secondary me-3"style="width: 80px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
+            <i class="fa fa-backward"style="font-size:20px"></i>
             </button>
             </a>     
         </div>
@@ -145,7 +145,7 @@ else{
 <div class="container">
   <div class="row justify-content-center">  
     <div class="col-lg-6">
-      <div class="card bg-white opacity-75 ">
+      <div class="card bg-white">
         <div class="card-header text-center ">Forgot Password</div>
         <div class="card-body">
           <form action="" method="POST">

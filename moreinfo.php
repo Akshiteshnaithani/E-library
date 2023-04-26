@@ -28,9 +28,9 @@ if (!isset($_SESSION['record'])) {
   </head>
   <body>
     <div>
-    <nav class="navbar navbar-expand-lg navbar-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">E-library</a>
+    <nav class="navbar navbar-expand-lg bg-light"style="box-shadow: 2px 3px 5px #888888;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="mainpage.php" style="font-size: 25px;">E-library</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -49,10 +49,10 @@ if (isset($_SESSION['record'])) {
     $data = $_SESSION['record'];
     $role = $data['0'];
     if ($role == 'admin') {?>
-            <button type="button" class="btn btn-secondary me-3" style="width: 100px; padding: 5px;  box-shadow: 2px 2px 5px #888888;" onclick="alert('Are you sure you want to Edit?')"><a style = "text-decoration:none; color:white;"href="editpage.php? id=<?php echo $_GET['id']; ?>">
+            <button type="button" class="btn btn-secondary me-3" style="width: 100px; padding: 5px;  box-shadow: 2px 2px 5px #888888;" ><a style = "text-decoration:none; color:white;"href="editpage.php? id=<?php echo $_GET['id']; ?>">
               Edit <i class="fa fa-pencil"style="font-size:20px"></i></a>
             </button>
-            <button type="button" class="btn btn-danger" style="width: 100px; padding: 5px; box-shadow: 2px 2px 5px #888888;"onclick="alert('Are you sure you want to Delete?')"><a style = "text-decoration:none; color:white;"href="delete.php? id=<?php echo $_GET['id']; ?>">Delete <i class="fa fa-trash"style="font-size:20px"></i></a></button>
+            <button type="button" class="btn btn-danger" style="width: 100px; padding: 5px; box-shadow: 2px 2px 5px #888888;"><a style = "text-decoration:none; color:white;"href="delete.php?del_book_id=<?php echo $_GET['id']; ?>">Delete <i class="fa fa-trash"style="font-size:20px"></i></a></button>
             <?php
 }
 }

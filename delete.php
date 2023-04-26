@@ -12,10 +12,4 @@ if($delete_book_result){
 
 
 
-$del_admin_query = "DELETE FROM registration WHERE id = '$del_id'";
-$delete_admin_result = mysqli_query($con, $del_admin_query);
-if($delete_book_result){
-
-    header("location:all_admins.php");
-}
 ?>

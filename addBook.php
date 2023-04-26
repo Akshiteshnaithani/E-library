@@ -55,9 +55,9 @@ if (isset($_POST['submit'])) {
   </head>
   <body>
     <div>
-    <nav class="navbar navbar-expand-lg navbar-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="mainpage.php">E-library</a>
+    <nav class="navbar navbar-expand-lg bg-light"style="box-shadow: 2px 3px 5px #888888;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="mainpage.php" style="font-size: 25px;">E-library</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -73,8 +73,8 @@ if (isset($_POST['submit'])) {
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <!-- back button -->
             <a href="mainpage.php"> 
-            <button type="button" class="btn btn-secondary me-3"style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
-            <i class="fa fa-backward"style="font-size:24px"></i>
+            <button type="button" class="btn btn-secondary me-3"style="width: 80px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
+            <i class="fa fa-backward"style="font-size:20px"></i>
             </button>
             </a>
           </div>
@@ -82,31 +82,31 @@ if (isset($_POST['submit'])) {
       </nav>
     </div>
     <div>
-      <p>Explore the world of books</p>
+      <p class="mt-5">Explore the world of books</p>
     </div> 
     <br>
     <br>
     <div class="container">
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-3 ">
             <form action="" method="POST" enctype="multipart/form-data">
                   <div class="mb-3">
                     <label for="bookImage" class="form-label times-new-roman">Book Image</label>
-                    <input type="file" class="form-control" name="bookimage" required>
+                    <input type="file" class="form-control"style="border:1px solid black;" name="bookimage" required>
                   </div>
               </div>
               <div class="col-md-6">
                   <div class="mb-3">
                     <label for="bookTitle" class="form-label times-new-roman">Book Title</label>
-                    <input type="text" class="form-control"  name="booktitle" required>
+                    <input type="text" class="form-control"style="border:1px solid black;"  name="booktitle" required>
                   </div>
                   <div class="mb-3">
                     <label for="authorName" class="form-label times-new-roman">Author Name</label>
-                    <input type="text" class="form-control"  name="authorname" required>
+                    <input type="text" class="form-control" style="border:1px solid black;" name="authorname" required>
                   </div>
                   <div class="mb-3">
                     <label for="bookDescription" class="form-label times-new-roman">Book Description</label>
-                    <textarea class="form-control"  name="bookdescription" rows="3" required></textarea>
+                    <textarea class="form-control"  name="bookdescription"style="border:1px solid black;" rows="3" required></textarea>
                   </div>
                   <button type="submit" class="btn btn-secondary" style="width: 120px; padding: 5px;box-shadow: 2px 2px 5px #888888;" name="submit"><i class="fa fa-save"style="font-size:24px"></i> Save</button>
             </form>

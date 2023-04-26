@@ -18,36 +18,45 @@ if (isset($_POST['submit'])) {
           $_SESSION['record'] = $record;
           $role = $data['user_role'];
           if ($role == 'admin') {
-  
-              $cpass = $data['password'];
-              $pass = password_verify($password, $cpass);
-  
-              if ($pass == true) {
-                  header("location:mainpage.php");
-              }
-          } elseif($role == 'user'){
-  
-              $cpass = $data['password'];
-              $pass = password_verify($password, $cpass);
-  
-              if ($pass == true) {
-                  header("location:mainpage.php");
-              } else {
-                  ?>
-                  <script>
-                      alert("login fail");
-                  </script>
-                  <?php
-              }
-  
-          }
-      } else {
-          echo"
-          <script>
-          alert('email not verified');
-          window.location.href='login.php';
-          </script>";
-      }
+
+            $cpass = $data['password'];
+            $pass = password_verify($password, $cpass);
+        
+            if ($pass == true) {
+                header("location:mainpage.php");
+            } else {
+                ?>
+                <script>
+                    alert("Incorrect password. Please try again.");
+                    window.location.href='login.php';
+                </script>
+                <?php
+            }
+        } elseif($role == 'user') {
+        
+            $cpass = $data['password'];
+            $pass = password_verify($password, $cpass);
+        
+            if ($pass == true) {
+                header("location:mainpage.php");
+            } else {
+                ?>
+                <script>
+                    alert("Incorrect password. Please try again.");
+                    window.location.href='login.php';
+                </script>
+                <?php
+            }
+        } else {
+            ?>
+            <script>
+                alert("Invalid role. Please try again.");
+                window.location.href='login.php';
+            </script>
+            <?php
+        }
+                
+      } 
   }
 }
 
@@ -77,7 +86,7 @@ if (isset($_POST['submit'])) {
     <div>
     <nav class="navbar navbar-expand-lg navbar-transparent">
         <div class="container-fluid">
-          <a class="navbar-brand mx-auto">Explore the world of books</a>
+          <a class="navbar-brand mx-auto"style="text-shadow: 2px 2px 2px #888888;">Explore the world of books</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -92,13 +101,10 @@ if (isset($_POST['submit'])) {
         </div>
       </nav>
     </div>
-    <div>
-      <p class="mt-5"></p>
-    </div>
-    <div class="container">
+    <div class="container mt-5">
   <div class="row justify-content-center">  
     <div class="col-lg-6">
-      <div class="card bg-white opacity-75 ">
+      <div class="card" style="border: 1px solid black;box-shadow: 2px 2px 2px #888888;"">
         <div class="card-header text-center ">LOG IN HERE</div>
         <div class="card-body">
           <form action="" method="POST">
@@ -120,6 +126,8 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </div>
+</div>
+
 </div>
 </body>
 </html>
