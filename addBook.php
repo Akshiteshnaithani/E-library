@@ -7,13 +7,14 @@ if (isset($_POST['submit'])) {
     $bookname = $_POST['booktitle'];
     $authorname = $_POST['authorname'];
     $description = $_POST['bookdescription'];
+    $total_book = $_POST['total_book'];
 
     $imgname = $_FILES['bookimage']['name'];
     $tempname = $_FILES['bookimage']['tmp_name'];
     move_uploaded_file($tempname, 'bookimage/' . $imgname);
 
-    $save_bookdetail = "INSERT INTO addbook (bookname,authorname,description,uploadimage)
-    VALUES('$bookname','$authorname','$description','$imgname')";
+    $save_bookdetail = "INSERT INTO addbook (bookname,authorname,description,uploadimage,total_book)
+    VALUES('$bookname','$authorname','$description','$imgname','$total_book')";
     $run_bookdeail = mysqli_query($con, $save_bookdetail);
 
     if ($run_bookdeail) {
@@ -103,6 +104,10 @@ if (isset($_POST['submit'])) {
                   <div class="mb-3">
                     <label for="authorName" class="form-label times-new-roman">Author Name</label>
                     <input type="text" class="form-control" style="border:1px solid black;" name="authorname" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="total_book" class="form-label times-new-roman">Total Books</label>
+                    <input type="text" class="form-control" style="border:1px solid black;" name="total_book" required>
                   </div>
                   <div class="mb-3">
                     <label for="bookDescription" class="form-label times-new-roman">Book Description</label>

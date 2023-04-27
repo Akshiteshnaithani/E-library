@@ -116,8 +116,8 @@ if (isset($_POST['submit'])) {
                 <input type="text" class="form-control" name="authorname" style="border:1px solid black;"value= "<?php echo $row ['authorname'];?>">
               </div>
               <div class="form-group times-new-roman">
-                <label for="book-description">Edit Book Description:</label>
-                <textarea class="form-control" name="bookdescription"style="border:1px solid black;"  value= "<?php echo $row ['description'];?>" rows="5"></textarea>
+                  <label for="bookDescription" class="form-label times-new-roman">Book Description</label>
+                  <input class="form-control"  name="bookdescription"style="border:1px solid black;" value= "<?php echo $row ['description'];?>">
               </div>
               <button type="submit" name= "submit" class="btn btn-secondary mt-3 " style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-save"style="font-size:24px"> </i> Save Changes</button>
             </div>

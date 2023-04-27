@@ -38,12 +38,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           </div>
-          <a href="mainpage.php"> 
+          <a href="mainpage.php">
               <!-- back button -->
             <button type="button" class="btn btn-secondary me-3"style="width: 80px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
             <i class="fa fa-backward"style="font-size:20px"></i>
             </button>
-            </a>     
+            </a>
         </div>
       </nav>
     </div>
@@ -55,41 +55,56 @@ include 'connection.php';
 session_start();
 // get id of book
 if (isset($_GET['id'])) {
- $id_book = $_GET['id'];
- 
- $record = $_SESSION['record'];
- $username = $record['1'];
- $email = $record['2'];
- $id_book = $_GET['id'];
- 
- $query = "SELECT bookname,authorname,uploadimage FROM addbook WHERE id = '$id_book' ";
- $result = mysqli_query($con, $query);
- $row = mysqli_fetch_array($result);
- $bookname = $row['bookname'];
- $authorname = $row['authorname'];
- $bookimage = $row['uploadimage'];
- 
- if (isset($_POST['submit'])) {
-   
-   $no_book = $_POST['no_book'];
-   $issue_date = $_POST['issue_date'];
-   $return_date = $_POST['return_date'];
-   
-   // check the book in wish-list
-   $duplicacy_query = "SELECT email FROM issue_book WHERE email = '$email'";
-   $duplicacy_result = mysqli_query($con, $duplicacy_query);
-   $record = mysqli_fetch_assoc($duplicacy_result);
-   $db_email = $record['email'];
-   
-   if ($email !== $db_email) {
-     $query = "INSERT INTO issue_book (book_id,user_name, email, book_name, bookimg, no_of_book, issue_date, return_date) VALUES('$id_book','$username','$email','$bookname','$bookimage',' $no_book','$issue_date',' $return_date')";
-     $results = mysqli_query($con, $query);
-     
-     echo '<script>alert("Book added to issued book"); window.location.href = "mainpage.php";</script>';
- } else {
-    echo '<script>alert("Book already added to issued book"); window.location.href = "mainpage.php";</script>';
- }
- }
+    $id_book = $_GET['id'];
+
+    // get user data
+    $record = $_SESSION['record'];
+    $username = $record['1'];
+    $email = $record['2'];
+    
+    //  get book data
+    $id_book = $_GET['id'];
+    $query = "SELECT id,bookname,authorname,description,uploadimage,available_book,total_book FROM addbook WHERE id = '$id_book' ";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_num_rows($result);
+
+    if ($row) {
+        $book_record = mysqli_fetch_assoc($result);
+        $book_data = array($book_record['id'], $book_record['bookname'], $book_record['authorname'], $book_record['description'], $book_record['uploadimage'], $book_record['total_book'], $book_record['available_book']);
+        $_SESSION['book_data'] = $book_data;
+        $available_book = $book_record['available_book'];
+        $total_book = $book_record['total_book'];
+        $bookname = $book_record['bookname'];
+        $authorname = $book_record['authorname'];
+        $bookimage = $book_record['uploadimage'];
+
+        if (isset($_POST['submit'])) {
+
+            $no_book = $_POST['no_book'];
+            $issue_date = $_POST['issue_date'];
+            $return_date = $_POST['return_date'];
+
+            // check the book in wish-list
+            $duplicacy_query = "SELECT email FROM issue_book WHERE email = '$email'";
+            $duplicacy_result = mysqli_query($con, $duplicacy_query);
+            $record = mysqli_fetch_assoc($duplicacy_result);
+            $db_email = $record['email'];
+
+            if ($email !== $db_email) {
+                $query = "INSERT INTO issue_book (book_id,user_name, email, book_name, bookimg, no_of_book, issue_date, return_date) VALUES('$id_book','$username','$email','$bookname','$bookimage',' $no_book','$issue_date',' $return_date')";
+                $results = mysqli_query($con, $query);
+
+                if ($result) {
+                    $update_query = "UPDATE addbook SET available_book = $available_book-1 WHERE id = '$id_book' ";
+                    $update_result = mysqli_query($con, $update_query);
+                }
+
+                echo '<script>alert("Book added to issued book"); window.location.href = "mainpage.php";</script>';
+            } else {
+                echo '<script>alert("Book already added to issued book"); window.location.href = "mainpage.php";</script>';
+            }
+        }
+    }
 }
 ?>
 <!-- main -->
@@ -97,118 +112,118 @@ if (isset($_GET['id'])) {
    <div class="container">
    <div class="card">
     <div class="row justify-content-center">
-   
+
    <div class="col-12 col-sm-12 col-md-12 col-lg-6 p-3">
-   
+
     <div class="d-flex flex-column justify-content-center align-items-center">
-   
-   
+
+
    <label class="mb-1 fw-bold fs-5 text-capitalize text-dark text-center">book cover</label>
- 
- 
- <img src="bookimage/<?= $bookimage; ?>" style="width:380px" class="img-fluid rounded-start">
- 
+
+
+ <img src="bookimage/<?=$bookimage;?>" style="width:380px" class="img-fluid rounded-start">
+
   </div>
- 
+
  </div>
 
 <div class="text-capitalize col-12 col-sm-12 col-md-12 col-lg-6 p-3">
-     
+
       <div class="justify-content-center align-items-center">
 
   <div class="mb-2">
-     
-     
+
+
       <label for="bookname" class="form-label fw-bold">Book Name</label>
-    
-    
-     <input type="text" name="bookname" class="form-control" value="<?= $bookname; ?>" readonly>
-   
-   
+
+
+     <input type="text" name="bookname" class="form-control" value="<?=$bookname;?>" readonly>
+
+
    </div>
-    
-    
+
+
     <div class="mb-2">
-     
-     
+
+
       <label for="authorname" class="form-label fw-bold">Author Name</label>
-    
-    
-     <input type="text" name="authorname" class="form-control" value="<?= $authorname; ?>" readonly>
-   
-   
+
+
+     <input type="text" name="authorname" class="form-control" value="<?=$authorname;?>" readonly>
+
+
    </div>
-    
-    
+
+
     <div class="mb-2">
-     
-     
+
+
       <label for="username" class="form-label fw-bold">User Name</label>
-    
-    
-     <input type="text" name="username" class="form-control" value="<?= $username; ?>" readonly>
-   
-   
+
+
+     <input type="text" name="username" class="form-control" value="<?=$username;?>" readonly>
+
+
    </div>
-    
-    
+
+
     <div class="mb-2">
-     
-     
+
+
       <label for="email" class="form-label fw-bold">email</label>
-    
-    
-     <input type="email" name="email" class="form-control" value="<?= $email; ?>" readonly>
-   
-   
+
+
+     <input type="email" name="email" class="form-control" value="<?=$email;?>" readonly>
+
+
    </div>
-    
-    
+
+
     <div class="mb-2">
-     
-     
+
+
       <label for="book" class="form-label fw-bold text-danger">you can issue only one book</label>
-    
-    
+
+
      <input type="text" name="no_book" min="0" max="1" class="form-control" value="1" readonly>
-   
-   
+
+
    </div>
-    
-    
+
+
     <div class="mb-2">
-     
-     
+
+
       <label for="issued" class="form-label fw-bold">issued date</label>
-    
-    
+
+
      <input type="text" name="issue_date" class="form-control" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly>
-   
-   
+
+
    </div>
-    
-    
+
+
     <div class="mb-2">
-     
-     
+
+
       <label for="return" class="form-label fw-bold">return date</label>
-    
-    
+
+
      <input type="text" name="return_date" class="form-control" value="<?php echo date("Y-m-d", strtotime('+7 days')); ?>" readonly>
-   
-   
+
+
    </div>
 
    <div class="mt-5">
-     
-     
+
+
       <button type="submit" name="submit" class="btn btn-secondary col-12 text-capitalize">get the book</button>
-   
-   
+
+
    </div>
-   
+
     </div>
-   
+
    </div>
     </div>
    </div>

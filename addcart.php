@@ -169,12 +169,22 @@ include 'connection.php';
 if (isset($_GET['del_issue_id'])) {
     $id = $_GET['del_issue_id'];
 
-    $sql = "DELETE FROM issue_book WHERE book_id = '$id'";
+    $sql = "DELETE FROM issue_book WHERE book_id = '$id' AND email ='$email'";
     $result = mysqli_query($con, $sql);
+
     if ($result) {
-        $available_book = $total_books + 1;
-        $update_query = "UPDATE bookdetail SET available_book = '$available_book' WHERE id = '$id' ";
-        $update_result = mysqli_query($con, $update_query);
+        // avalable book
+        $search_query = "SELECT available_book FROM addbook WHERE id ='$id' ";
+        $result = mysqli_query($con, $search_query);
+        $row = mysqli_num_rows($result);
+
+        if ($row){
+          $book_record = mysqli_fetch_assoc($result);
+          $available_book = $record['available_book'];
+
+          $update_query = "UPDATE addbook SET available_book = $available_book + 1 WHERE id = '$id' ";
+          $update_result = mysqli_query($con, $update_query);
+        }
     }
 }
 
@@ -195,7 +205,7 @@ $row = mysqli_num_rows($result);
                 <th>Issued Date</th>
                 <th>Return Date</th>
                 <th class="text-center">Book Image</th>
-                <th class="text-center">Delete</th>
+                <th class="text-center">Return Book</th>
             </tr>
 
             <tr>
@@ -213,7 +223,7 @@ while ($row = mysqli_fetch_array($result)) {
                     <th class="fw-normal"><?php echo $row['issue_date']; ?></th>
                     <th class="fw-normal"><?php echo $row['return_date']; ?></th>
                     <th class="text-center"><img class="indeximg" src="bookimage/<?=$row['bookimg'];?>" style="width: 20px; height:30px;"></th>
-                    <th class="text-center"><a href="?del_issue_id=<?php echo $row['book_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?')"><i class="fa fa-trash text-danger"></i></a></th>
+                    <th class="text-center"><a href="?del_issue_id=<?php echo $row['book_id']; ?>" onclick="return confirm('Are you sure you want to return this book?')"><i class="fa fa-rotate-left"style="font-size:20px ; color: red;"></i></a></th>
 
             </tr>
         <?php
@@ -239,7 +249,7 @@ if (isset($_GET['delete_reader'])) {
 
 // book readed button
 if (isset($_GET['readed_id'])) {
-  $id_book = $_GET['readed_id'];
+    $id_book = $_GET['readed_id'];
 
     // get user data from session
     $data = $_SESSION['record'];

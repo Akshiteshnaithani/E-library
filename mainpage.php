@@ -3,8 +3,8 @@ session_start();
 if (!isset($_SESSION['record'])) {
     header('location:login.php');
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,10 +12,10 @@ if (!isset($_SESSION['record'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+    crossorigin="anonymous"
     />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,25 +23,27 @@ if (!isset($_SESSION['record'])) {
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
-    ></script>
+      ></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>E-Library</title>
   </head>
   <body>
+<?php include 'history.php';?>
+
   <div>
   <nav class="navbar navbar-expand-lg bg-light"style="box-shadow: 2px 3px 5px #888888;">
     <div class="container-fluid">
       <a class="navbar-brand" href="mainpage.php" style="font-size: 25px;">E-library</a>
 
       <button
-        class="navbar-toggler"
+      class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
-      >
+        >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,13 +55,13 @@ if (!isset($_SESSION['record'])) {
           </div>
         </form>
         <form action="" method="get">
-      <div class="mx-3 d-flex">
-        <select name="sort_alphabet" class="form-control">
+          <div class="mx-3 d-flex">
+            <select name="sort_alphabet" class="form-control">
             <option value="">--SELECT OPTION--</option>
             <option value="a-z" <?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "a-z") {echo "selected";}?>>
                 A-Z(Ascending Order)
-            </option>
-            <option value="z-a" <?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "z-a") {echo "selected";}?>>
+              </option>
+              <option value="z-a" <?php if (isset($_GET['sort_alphabet']) && $_GET['sort_alphabet'] == "z-a") {echo "selected";}?>>
                 Z-A(Descending Order)
             </option>
         </select>
@@ -69,42 +71,39 @@ if (!isset($_SESSION['record'])) {
     </form>
 
 
-</div>
+  </div>
 
 
-<!-- button only admin can acess -->
+  <!-- button only admin can acess -->
 
-          <?php
+  <?php
 if (isset($_SESSION['record'])) {
     $data = $_SESSION['record'];
 
     $role = $data['0'];
     if ($role == 'admin') {?>
     <div class="btn-group">
-  <button type="button" class="btn btn-secondary" style="width: 90px; padding: 3px;  box-shadow: 2px 2px 5px #888888;">Action <i class="fa fa-wrench"></i></button>
-  <button type="button" class="btn btn-light  dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" style="width: 30px; padding: 2px;  box-shadow: 2px 2px 5px #888888;">
-    <span class="visually-hidden">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu "style="background-color: transparent;border-color: transparent;">
-  <a href="addBook.php">
-  <button type="button" class="btn btn-light"  style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Book <i class="fa fa-book"></i></button>
-</a>
-<a href="registrationpage.php">
-  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Admin <i class="fa fa-user"></i></button>
-</a>
-<a href="all_admins.php">
-  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Details <i class="fa fa-user"></i></button>
-</a>
-</a>
-<a href="booklist.php">
-  <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Book List <i class="fa fa-address-book"></i></button>
-</a>
-  </ul>
-
-
-<?php
-
-    }
+      <button type="button" class="btn btn-secondary" style="width: 90px; padding: 3px;  box-shadow: 2px 2px 5px #888888;">Action <i class="fa fa-wrench"></i></button>
+      <button type="button" class="btn btn-light  dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" style="width: 30px; padding: 2px;  box-shadow: 2px 2px 5px #888888;">
+        <span class="visually-hidden">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu "style="background-color: transparent;border-color: transparent;">
+        <a href="addBook.php">
+          <button type="button" class="btn btn-light"  style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Book <i class="fa fa-book"></i></button>
+        </a>
+        <a href="registrationpage.php">
+          <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Add Admin <i class="fa fa-user"></i></button>
+        </a>
+        <a href="all_admins.php">
+          <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Details <i class="fa fa-user"></i></button>
+        </a>
+      </a>
+      <a href="booklist.php">
+        <button type="button" class="btn btn-light mt-2" style="width: 120px; padding: 5px; box-shadow: 2px 2px 5px #888888;">Book List <i class="fa fa-address-book"></i></button>
+      </a>
+    </ul>
+ <?php
+}
 }
 ?>
 
@@ -117,8 +116,9 @@ if (isset($_SESSION['record'])) {
     if ($role == 'user') {?>
 
  <form action="addcart.php" method="post">
-<button type="submit" name="addcart" class="btn btn-success mx-3 "style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-shopping-cart"></i></button>
+   <button type="submit" name="addcart" class="btn btn-success mx-3 "style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-shopping-cart"></i></button>
 </form>
+<button class="btn btn-secondary mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button"><i class="fa fa-history"></i></button>
 <?php
 
     }
@@ -194,9 +194,29 @@ if (isset($_SESSION['record'])) {
 
             $role = $data['0'];
             if ($role == 'user') {?>
+
+<!-- wishlist button -->
  <a class="btn btn-light" name="wish" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;" href="addcart.php?id=<?=$row['id'];?>"><i class="fa fa-heart"></i></i></a>
- <a class="btn btn-light" name="issue" style=" font-size: 15px; padding: 8px 8px;box-shadow: 2px 2px 5px #888888;" href="issuebook.php?id=<?=$row['id'];?>"><i class="fa fa-book"></i></i></a>
- <a class="btn btn-light" name="reader" style=" font-size: 15px; padding: 8px 8px;box-shadow: 2px 2px 5px #888888;" href="addcart.php?readed_id=<?=$row['id'];?>"><i class="fa fa-check"></i></i></a>
+<!-- issue button -->
+<?php
+$id_book = $row['id'];
+                $query = "SELECT available_book FROM addbook WHERE id = '$id_book' ";
+                $result = mysqli_query($con, $query);
+                $record = mysqli_fetch_assoc($result);
+                // print_r($record);
+                $book_data = array($record['available_book']);
+                $_SESSION['book_data'] = $book_data;
+                $available_book = $record['available_book'];
+                // print_r($available_book);
+                if ($available_book == 0) {
+                    ?>
+<a class="btn btn-light position-relative" name="issue" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;" href="issuebook.php?id=<?=$row['id'];?>">
+  <i class="fa fa-book"></i>
+  <span class="badge bg-danger rounded-pill position-absolute top-0 end-0"><?php echo $available_book ?></span>
+</a>
+<?php }?>
+<!-- readed button -->
+<a class="btn btn-light" name="reader" style=" font-size: 15px; padding: 8px 8px;box-shadow: 2px 2px 5px #888888;" href="addcart.php?readed_id=<?=$row['id'];?>"><i class="fa fa-check"></i></i></a>
 
 <?php
 

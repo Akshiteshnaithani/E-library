@@ -38,12 +38,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           </div>
-          <a href="mainpage.php"> 
+          <a href="mainpage.php">
               <!-- back button -->
               <button type="button" class="btn btn-secondary me-3"style="width: 80px; padding: 5px; box-shadow: 2px 2px 5px #888888;">
             <i class="fa fa-backward"style="font-size:20px"></i>
             </button>
-            </a>     
+            </a>
         </div>
       </nav>
     </div>
@@ -51,11 +51,11 @@
       <p class="mt-5">Explore the world of books</p>
     </div>
     <?php
-    include 'connection.php';
-    
-    $allbook_query = "SELECT * FROM addbook";
-    $result = mysqli_query($con, $allbook_query);
-    if ($row = mysqli_num_rows($result)) {
+include 'connection.php';
+
+$allbook_query = "SELECT * FROM addbook";
+$result = mysqli_query($con, $allbook_query);
+if ($row = mysqli_num_rows($result)) {
     ?>
         <div class="container-fluid">
             <table class="table table-bordered table-hover table-sm text-center" style=" border: 1px solid black;">
@@ -64,24 +64,28 @@
                     <th>Book Name</th>
                     <th>Author Name</th>
                     <th>Book Image</th>
+                    <th>total books</th>
+                    <th>available books</th>
                 </tr>
                 <tr class="fw-normal">
                     <?php
-                    while ($row = mysqli_fetch_array($result)) {
-                    ?>
-                        <th><?= $row['id']; ?></th>
-                        <th><?= $row['bookname']; ?></th>
-                        <th><?= $row['authorname']; ?></th>
-                        <th><img class="indeximg" src="bookimage/<?= $row['uploadimage']; ?>" style="width: 50px; height:80;"></th>
-                </tr>
-    
-        <?php
-                    }
-                }
+while ($row = mysqli_fetch_array($result)) {
         ?>
+                        <th><?=$row['id'];?></th>
+                        <th><?=$row['bookname'];?></th>
+                        <th><?=$row['authorname'];?></th>
+                        <th><img class="indeximg" src="bookimage/<?=$row['uploadimage'];?>" style="width: 50px; height:80;"></th>
+                        <th class="fw-normal"><?= $row['total_book']; ?></th>
+                    <th class="fw-normal"><?= $row['available_book']; ?></th>
+                </tr>
+
+        <?php
+}
+}
+?>
             </table>
         </div>
-?>    
+?>
 
 </body>
 </html>
