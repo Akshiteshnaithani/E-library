@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
     <?php
 } else {
         if ($password) {
-            $insertquery = "insert into registration( full_name,email,password ,user_role,verification_code,is_verified) values( '$name' , '$email' , '$pass','$role','$v_code','0' )";
+            $insertquery = "insert into registration( full_name, email, password, user_role, verification_code, is_verified) values( '$name' , '$email' , '$pass','$role','$v_code','0' )";
             $iquery = mysqli_query($con, $insertquery);
 
             if ($iquery && sendMail($_POST['email'], $v_code)) {
