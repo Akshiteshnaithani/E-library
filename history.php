@@ -57,7 +57,7 @@
                             }
                         } else {
                             // display a message if there are no books for this month
-                            echo "<p>No books read this month</p>";
+                            echo "<h6>No books read this month</h6>";
                         }
                         mysqli_free_result($result);
                         mysqli_close($con);

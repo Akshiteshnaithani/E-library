@@ -62,7 +62,7 @@ if (isset($_SESSION['record'])) {
       </nav>
     </div>
     <div>
-      <p>Explore the world of books</p>
+      <p>More Info</p>
     </div>
     <br/>
     <br/>
@@ -83,18 +83,18 @@ if (isset($_GET['id'])) {
             <img src="bookimage/<?php echo $row['uploadimage']; ?>" class="img-fluid" style="width: 220px;"/>
           </div>
           <div class="col-md-8">
-            <div class="form-group times-new-roman"style="font-size: 35px;">
+            <div class="moreinfo-form-group times-new-roman"style="font-size: 35px;">
               <label for="book-title">Book Title:</label>
-              <h3><?php echo $row['bookname'] ?></h3>
             </div>
-            <div class="form-group times-new-roman"style="font-size: 35px;">
+              <h4><?php echo $row['bookname'] ?></h4>
+            <div class="moreinfo-form-group times-new-roman"style="font-size: 35px;">
               <label for="author-name">Author Name:</label>
-              <h3><?php echo $row['authorname'] ?></h3>
             </div>
-            <div class="form-group times-new-roman"style="font-size: 35px;">
+              <h4><?php echo $row['authorname'] ?></h4>
+            <div class="moreinfo-form-group times-new-roman"style="font-size: 35px;">
               <label for="book-description">Book Description:</label>
-              <h3><?php echo $row['description'] ?></h3>
             </div>
+              <h4><?php echo $row['description'] ?></h4>
           </div>
         </div>
       </form>

@@ -133,7 +133,7 @@ if (isset($_SESSION['record'])) {
 </div>
 
     <div>
-      <p class="mt-5">Explore the world of books</p>
+      <p class="mt-5">Explore the world of book's</p>
     </div>
     <br />
 
@@ -180,8 +180,8 @@ if (mysqli_num_rows($query_sort_run) > 0) {
             <div class="card m-3" style="width: 222px; background-color: transparent; border-color: transparent;">
             <img src="bookimage/<?=$row['uploadimage'];?>" alt="Card image" class="card-img-top" style="width: 220px; height:320px; box-shadow: 10px 10px 10px #888888; transition: transform 0.2s ease-in-out;"/>
                 <div class="mt-3">
-                    <h6 class="card-title about-sections times-new-roman">BOOK NAME: <?php echo $row['bookname']; ?></h6>
-                    <h6 class="card-title  about-section times-new-roman">AUTHOR NAME: <?php echo $row['authorname']; ?></h6>
+                    <h1 class="card-title times-new-roman">Book Name:</h1> <h6 class="hide"><?php echo $row['bookname']; ?></h6>
+                    <h1 class="card-title times-new-roman">Author Name:</h1> <h6 class="hide"><?php echo $row['authorname']; ?></h6>
                   </div>
                   <div class="mt-2">
                   <a href="moreinfo.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;">More Info <i class="fa fa-arrow-right"></i></a>

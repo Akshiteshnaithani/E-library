@@ -48,7 +48,7 @@
       </nav>
     </div>
     <div>
-      <p class="mt-5">Explore the world of books</p>
+      <p class="mt-5">Book's List</p>
     </div>
     <?php
 include 'connection.php';

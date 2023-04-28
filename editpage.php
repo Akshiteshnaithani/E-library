@@ -90,33 +90,32 @@ if (isset($_POST['submit'])) {
       </nav>
     </div>
     <div>
-      <p>Explore the world of books</p>
+      <p>Edit</p>
     </div>
     <br />
     <br />
     <div class="container">
         <form action="" enctype="multipart/form-data" method="post">
           <div class="row">
-            <div class="col-md-4">
-              <img src="" class="img-fluid">
-              <div class="form-group  times-new-roman">
-                <label for="book-image">Edit Book Image:</label>
+            <div class="col-md-3">
+              <div class="form-editpage  times-new-roman">
+                <h3 for="book-image"style="font-weight: bold;">Edit Book Image:</h3>
                 <img src="bookimage/<?php echo $row ['uploadimage']?>" alt=""style="height: 350px; width: 280px;">
                 <input type="hidden" name="oldimage"  value= "<?php echo $row ['uploadimage']?>">
                 <input type="file" name="bookimage" value="<?php echo $imgname ['uploadimage'] ?>">
               </div>
             </div>
             <div class="col-md-8">
-              <div class="form-group  times-new-roman">
-                <label for="book-title">Edit Book Title:</label>
+              <div class="form-editpage  times-new-roman">
+                <h3 for="book-title"style="font-weight: bold;">Edit Book Title:</h3>
                 <input type="text" class="form-control" name="booktitle"style="border:1px solid black;" value= "<?php echo $row ['bookname'] ?>" >
               </div>
-              <div class="form-group  times-new-roman">
-                <label for="author-name">Edit Author Name:</label>
+              <div class="form-editpage  times-new-roman">
+                <h3 for="author-name"style="font-weight: bold;">Edit Author Name:</h3>
                 <input type="text" class="form-control" name="authorname" style="border:1px solid black;"value= "<?php echo $row ['authorname'];?>">
               </div>
-              <div class="form-group times-new-roman">
-                  <label for="bookDescription" class="form-label times-new-roman">Book Description</label>
+              <div class="form-editpage times-new-roman">
+                  <h3 for="bookDescription"style="font-weight: bold;">Book Description:</h3>
                   <input class="form-control"  name="bookdescription"style="border:1px solid black;" value= "<?php echo $row ['description'];?>">
               </div>
               <button type="submit" name= "submit" class="btn btn-secondary mt-3 " style=" box-shadow: 2px 2px 5px #888888;"><i class="fa fa-save"style="font-size:24px"> </i> Save Changes</button>
