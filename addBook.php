@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
       </nav>
     </div>
     <div>
-      <p class="mt-5">Explore the world of books</p>
+      <p class="mt-5">Add Book</p>
     </div> 
     <br>
     <br>

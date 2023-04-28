@@ -109,11 +109,11 @@ if (isset($_POST['submit'])) {
         <div class="card-body">
           <form action="" method="POST">
             <div class="mb-3 text-center">
-              <label for="email" class="form-label  times-new-roman">Email address</label>
+              <label for="email" class="form-login  times-new-roman">Email address</label>
               <input type="email" class="form-control" style="border:1px solid black;" placeholder="Enter email" name="email" />
             </div>
             <div class="mb-3 text-center">
-              <label for="password" class="form-label times-new-roman">Password</label>
+              <label for="password" class="form-login times-new-roman">Password</label>
               <input type="password" class="form-control" style="border:1px solid black;"placeholder="Password" name="password" />
             </div>
             <h6 class="text-right "><a href="forgotpassword.php"class="text-decoration-none">Forgot password?</a></h6>
