@@ -1,76 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
-
-
-/* body {
-  background-image: url('bgimages/2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-  
 .text-elb{
-  color: rgba(0, 0, 0, 0.711);
+color: rgba(0, 0, 0, 0.711);
 }
-  .navbar-brand {
-    color: rgb(24, 26, 24);
-  }
-  .navbar-brand {
-    font-size: 50px;
-  }
-  .card-title.times-new-roman {
-    color: rgb(255, 0, 47);
-    font-weight: bold;
-    font-size: 20px;
-  }
+.navbar-brand {
+  color: rgb(24, 26, 24);
+}
+.navbar-brand {
+  font-size: 50px;
+}
+.card-title.times-new-roman {
+  color: rgb(255, 0, 47);
+  font-weight: bold;
+  font-size: 20px;
+}
 
-  .form-label.times-new-roman{
-    color: rgb(255, 0, 47);
-    font-weight: bold;
-    font-size: 24px;
-  }
+.form-label.times-new-roman{
+  color: rgb(255, 0, 47);
+  font-weight: bold;
+  font-size: 24px;
+}
 
-  .form-editpage.times-new-roman{
-    color: rgb(255, 0, 47);
+.form-editpage.times-new-roman{
+  color: rgb(255, 0, 47);
 
-  }
-  .moreinfo-form-group.times-new-roman{
-    color: rgb(255, 0, 47);
-    font-weight: bold;
-  }
-
-  .navbar-brand,p {
-    font-family: "Times New Roman", Times, serif;
-  }
-  p{
-    text-align: center;
-    color: rgb(141, 17, 17);
-    font-size: 40px;
-    text-shadow: 2px 2px 8px #a38787;
-  }
-  .card-header {
-    font-size: 24px; 
-    font-family:"Times New Roman", Times, serif;
-  }
-  .times-new-roman {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    font-style: bold;
-    color: black;
-  }
-  
-  .btn-transparent {
-    background-color: transparent;
-    border-color: transparent;
-    color: #007bff;
-  }
-  .card-img-top:hover {
-    transform: scale(1.1);
-  }
-  .hide {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+}
+.moreinfo-form-group.times-new-roman{
+  color: rgb(255, 0, 47);
+  font-weight: bold;
+}
+.navbar-brand,p {
+  font-family: "Times New Roman", Times, serif;
+}
+p{
+  text-align: center;
+  color: rgb(141, 17, 17);
+  font-size: 40px;
+  text-shadow: 2px 2px 8px #a38787;
+}
+.card-header {
+  font-size: 24px; 
+  font-family:"Times New Roman", Times, serif;
+}
+.times-new-roman {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-style: bold;
+  color: black;
+}
+.btn-transparent {
+  background-color: transparent;
+  border-color: transparent;
+  color: #007bff;
+}
+.card-img-top:hover {
+  transform: scale(1.1);
+}
+.hide {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .title-head{
   margin-top:120px;
@@ -97,13 +85,11 @@
   background-color: #fff;
   border: 2px solid #ccc;
 }
-
 .pagination .page-item.active .page-link {
   color: #fff;
   background-color: #333;
   border-color: #333;
 }
-
 
 
 

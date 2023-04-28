@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
     <?php
 } else {
         if ($password) {
-            $insertquery = "insert into registration( full_name , email , password ,user_role,verification_code,is_verified) values( '$name' , '$email' , '$pass','$role','$v_code','0' )";
+            $insertquery = "insert into registration( full_name,email,password ,user_role,verification_code,is_verified) values( '$name' , '$email' , '$pass','$role','$v_code','0' )";
             $iquery = mysqli_query($con, $insertquery);
 
             if ($iquery && sendMail($_POST['email'], $v_code)) {
@@ -138,15 +138,15 @@ header("Location:login.php");
               <div class="card-body text-center">
                 <form action="" method="post">
                   <div class="mb-3">
-                    <label for="fullName" class="form-register  times-new-roman">Full Name</label>
+                    <label for="fullName" class="form-register times-new-roman">Full Name</label>
                     <input type="text" class="form-control"style="border:1px solid black;" name="full_name" placeholder="Enter full name">
                   </div>
                   <div class="mb-3">
-                    <label for="email" class="form-register  times-new-roman">Email address</label>
+                    <label for="email" class="form-register times-new-roman">Email address</label>
                     <input type="email" class="form-control"style="border:1px solid black;"  name="email" placeholder="Enter email">
                   </div>
                   <div class="mb-3">
-                    <label for="password" class="form-register  times-new-roman">Password</label>
+                    <label for="password" class="form-register times-new-roman">Password</label>
                     <input type="password" class="form-control" style="border:1px solid black;" name="password" placeholder="Password">
                   </div>
                   <?php
@@ -166,13 +166,12 @@ if (isset($_SESSION['record'])) {
 
 ?>
                   <div class="mb-3">
-                    <label for="Role" class="form-register  times-new-roman">Role</label>
-                    <input class="form-control" type="text"style="border:1px solid black;" value="<?php echo $role ?>" name="role" readonly>
+                    <label for="Role" class="form-register times-new-roman">Role</label>
+                    <input class="form-control" type="text"style="border:1px solid black;"value="<?php echo $role ?>" name="role" readonly>
                   </div>
                   <div class="mb-3 text-center">
                     <button type="submit" class="btn btn-primary" name="submit">REGISTER</button>
                   </div>
-
                   <h6 class="text-center ">Already have an account? <a href="login.php"class="text-decoration-none">Log in here</a></h6>
                 </form>
               </div>
