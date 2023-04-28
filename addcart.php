@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,7 +73,6 @@
   <div class="tab-pane active" id="want_to_read-tab">
   <?php
 include 'connection.php';
-session_start();
 
 // to delete book from wish-list
 if (isset($_GET['delete_id'])) {
@@ -169,7 +172,7 @@ include 'connection.php';
 if (isset($_GET['del_issue_id'])) {
     $id = $_GET['del_issue_id'];
 
-    $sql = "DELETE FROM issue_book WHERE book_id = '$id' AND email ='$email'";
+    $sql = "DELETE FROM issue_book WHERE book_id = '$id'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {
@@ -178,12 +181,12 @@ if (isset($_GET['del_issue_id'])) {
         $result = mysqli_query($con, $search_query);
         $row = mysqli_num_rows($result);
 
-        if ($row){
-          $book_record = mysqli_fetch_assoc($result);
-          $available_book = $record['available_book'];
+        if ($row) {
+            $book_record = mysqli_fetch_assoc($result);
+            $available_book = $book_record['available_book'];
 
-          $update_query = "UPDATE addbook SET available_book = $available_book + 1 WHERE id = '$id' ";
-          $update_result = mysqli_query($con, $update_query);
+            $update_query = "UPDATE addbook SET available_book = $available_book + 1 WHERE id = '$id' ";
+            $update_result = mysqli_query($con, $update_query);
         }
     }
 }

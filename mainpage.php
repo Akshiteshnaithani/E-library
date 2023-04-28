@@ -198,23 +198,8 @@ if (isset($_SESSION['record'])) {
 <!-- wishlist button -->
  <a class="btn btn-light" name="wish" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;" href="addcart.php?id=<?=$row['id'];?>"><i class="fa fa-heart"></i></i></a>
 <!-- issue button -->
-<?php
-$id_book = $row['id'];
-                $query = "SELECT available_book FROM addbook WHERE id = '$id_book' ";
-                $result = mysqli_query($con, $query);
-                $record = mysqli_fetch_assoc($result);
-                // print_r($record);
-                $book_data = array($record['available_book']);
-                $_SESSION['book_data'] = $book_data;
-                $available_book = $record['available_book'];
-                // print_r($available_book);
-                if ($available_book == 0) {
-                    ?>
 <a class="btn btn-light position-relative" name="issue" style="font-size: 15px; padding: 8px 8px; box-shadow: 2px 2px 5px #888888;" href="issuebook.php?id=<?=$row['id'];?>">
-  <i class="fa fa-book"></i>
-  <span class="badge bg-danger rounded-pill position-absolute top-0 end-0"><?php echo $available_book ?></span>
-</a>
-<?php }?>
+  <i class="fa fa-book"></i></a>
 <!-- readed button -->
 <a class="btn btn-light" name="reader" style=" font-size: 15px; padding: 8px 8px;box-shadow: 2px 2px 5px #888888;" href="addcart.php?readed_id=<?=$row['id'];?>"><i class="fa fa-check"></i></i></a>
 
