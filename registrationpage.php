@@ -172,7 +172,12 @@ if (isset($_SESSION['record'])) {
                   <div class="mb-3 text-center">
                     <button type="submit" class="btn btn-primary" name="submit">REGISTER</button>
                   </div>
-                  <h6 class="text-center ">Already have an account? <a href="login.php"class="text-decoration-none">Log in here</a></h6>
+                  <?php
+// Check if role is admin
+if ($role !== 'admin') {
+    echo '<h6 class="text-center">Already have an account? <a href="login.php" class="text-decoration-none">Log in here</a></h6>';
+}
+?>
                 </form>
               </div>
             </div>
