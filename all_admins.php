@@ -93,7 +93,7 @@ if ($results === false) {
                     <th>role</th>
                     <th>username</th>
                     <th>e-mail</th>
-                    <!-- <th>update</th> -->
+                    <th>update</th>
                     <th>delete</th>
                 </tr>
     <?php
@@ -103,7 +103,7 @@ while ($row = mysqli_fetch_array($results)) {
                     <th><?=$row['user_role'];?></th>
                     <th><?=$row['full_name'];?></th>
                     <th><?=$row['email'];?></th>
-                    <!-- <th><a href="edit-book.php?id=<?php echo $row['id']; ?>" style="color: black;"><i class="fa fa-edit"style="font-size:20px"></i></a></th> -->
+                    <th><a href="edit_admin.php?edit_admin_id=<?php echo $row['id']; ?>" style="color: black;"><i class="fa fa-edit"style="font-size:20px"></i></a></th>
                     <th><a href="?del_admin_id=<?php echo $row['id']; ?>" style="color: black;"><i class="fa fa-trash" style="font-size:20px"></i></a></th>
                 </tr>
     <?php
